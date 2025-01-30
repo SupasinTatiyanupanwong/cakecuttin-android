@@ -1,0 +1,8 @@
+root = true
+
+[*]
+ij_continuation_indent_size = 8
+max_line_length = 120
+
+[**.xml]
+ij_xml_continuation_indent_size = 4

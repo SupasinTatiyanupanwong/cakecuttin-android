@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CuttinActivity"
+    tools:ignore="ContentDescription"
+    tools:layout_marginBottom="56dp"
+    tools:layout_marginTop="24dp">
+
+    <FrameLayout
+        android:id="@+id/adContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <dev.supasintatiyanupanwong.apps.android.cakecuttin.CuttinOverlay
+            android:id="@+id/cuttin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:id="@+id/counts_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/counts"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="#44464F"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="HardcodedText">
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="3"
+                    android:text="3x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="4"
+                    android:text="4x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="5"
+                    android:text="5x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="6"
+                    android:text="6x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="7"
+                    android:text="7x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="8"
+                    android:text="8x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="9"
+                    android:text="9x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="10"
+                    android:text="10x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="11"
+                    android:text="11x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="12"
+                    android:text="12x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="13"
+                    android:text="13x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="14"
+                    android:text="14x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="15"
+                    android:text="15x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="16"
+                    android:text="16x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="17"
+                    android:text="17x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="18"
+                    android:text="18x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="19"
+                    android:text="19x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="20"
+                    android:text="20x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="21"
+                    android:text="21x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="22"
+                    android:text="22x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="23"
+                    android:text="23x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="24"
+                    android:text="24x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="25"
+                    android:text="25x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="26"
+                    android:text="26x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="27"
+                    android:text="27x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="28"
+                    android:text="28x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="29"
+                    android:text="29x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="30"
+                    android:text="30x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="31"
+                    android:text="31x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="32"
+                    android:text="32x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="33"
+                    android:text="33x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="34"
+                    android:text="34x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="35"
+                    android:text="35x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="36"
+                    android:text="36x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="37"
+                    android:text="37x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="38"
+                    android:text="38x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="39"
+                    android:text="39x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="40"
+                    android:text="40x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="41"
+                    android:text="41x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="42"
+                    android:text="42x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="43"
+                    android:text="43x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="44"
+                    android:text="44x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="45"
+                    android:text="45x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="46"
+                    android:text="46x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="47"
+                    android:text="47x" />
+
+                <TextView
+                    style="@style/Widget.CakeCuttin.Text.Zoom"
+                    android:tag="48"
+                    android:text="48x" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_oval_hairlined" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1">
+
+            <FrameLayout
+                android:id="@+id/hand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_oval_hairlined"
+                    android:padding="4dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_waving_hand_24" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/color"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_oval_hairlined"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_color_lens_24"
+            tools:tint="#FF0000" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginVertical="16dp">
+
+            <ImageButton
+                android:id="@+id/capture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_oval_hairlined"
+                android:padding="8dp"
+                android:src="@drawable/bg_oval_filled"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/clear"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_oval_hairlined"
+                android:padding="4dp"
+                android:rotation="45"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_add_circle_24"
+                android:visibility="visible" />
+        </FrameLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/shape"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_oval_hairlined"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/ic_add_circle_outlined_24" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:visibility="invisible">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="4dp"
+                tools:ignore="UselessParent">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_oval_hairlined"
+                    android:padding="4dp"
+                    android:scaleType="centerInside" />
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
