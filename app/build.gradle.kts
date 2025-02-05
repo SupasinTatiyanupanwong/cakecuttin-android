@@ -39,6 +39,14 @@ android {
         }
     }
 
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("google") {
+            isDefault = true
+        }
+        create("amazon")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -63,10 +71,16 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.4.1")
     implementation("androidx.camera:camera-view:1.4.1")
 
-    implementation("com.google.android.gms:play-services-ads-lite:23.6.0")
-    implementation("com.google.android.gms:play-services-instantapps:18.1.0")
+    "googleImplementation"("com.google.android.gms:play-services-ads-lite:23.6.0")
+    "googleImplementation"("com.google.android.gms:play-services-instantapps:18.1.0")
+
+    "amazonImplementation"("com.google.android.gms:play-services-ads-lite:23.6.0")
 }
 
-tasks.withType<Test> {
-    enabled = false
+afterEvaluate {
+    tasks.configureEach {
+        if (name.contains("UnitTest") || name.contains("AndroidTest")) {
+            enabled = false
+        }
+    }
 }
