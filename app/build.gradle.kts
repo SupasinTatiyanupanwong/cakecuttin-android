@@ -45,6 +45,7 @@ android {
             isDefault = true
         }
         create("amazon")
+        create("huawei")
     }
 
     compileOptions {
@@ -73,8 +74,10 @@ dependencies {
 
     "googleImplementation"("com.google.android.gms:play-services-ads-lite:23.6.0")
     "googleImplementation"("com.google.android.gms:play-services-instantapps:18.1.0")
+    "googleCompileOnly"("com.huawei.hms:ads-lite:13.4.76.300")
 
-    "amazonImplementation"("com.google.android.gms:play-services-ads-lite:23.6.0")
+    "huaweiImplementation"("com.huawei.hms:ads-lite:13.4.76.300")
+    "huaweiCompileOnly"("com.google.android.gms:play-services-ads-lite:23.6.0")
 }
 
 afterEvaluate {

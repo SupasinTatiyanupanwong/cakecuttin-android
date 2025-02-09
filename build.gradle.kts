@@ -2,6 +2,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven("https://developer.huawei.com/repo/")
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.8.0")
@@ -13,5 +14,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven("https://developer.huawei.com/repo/")
     }
 }

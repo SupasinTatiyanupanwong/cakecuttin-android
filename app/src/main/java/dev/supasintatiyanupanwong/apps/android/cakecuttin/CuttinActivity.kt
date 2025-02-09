@@ -19,10 +19,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
 import dev.supasintatiyanupanwong.apps.android.cakecuttin.databinding.CuttinActivityBinding
+import dev.supasintatiyanupanwong.libraries.android.kits.ads.banner.BannerAdSize
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.app.activity.policy.applyEdgeToEdge
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.graphics.or
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.displayCutouts
@@ -47,7 +45,6 @@ class CuttinActivity : Activity(), LifecycleOwner {
     override fun getLifecycle() = lifecycleRegistry
 
     private val binding by lazy(NONE) { CuttinActivityBinding.inflate(layoutInflater) }
-    private val adView by lazy(NONE) { AdView(this) }
 
     private val cameraProvider by lazy(NONE) { ProcessCameraProvider.getInstance(this).get() }
     private val cameraSelector by lazy(NONE) { CameraSelector.DEFAULT_BACK_CAMERA }
@@ -76,19 +73,16 @@ class CuttinActivity : Activity(), LifecycleOwner {
             insets
         }
 
-        OneShotPreDrawListener.add(binding.adContainer) {
+        OneShotPreDrawListener.add(binding.ad) {
             val adSize =
-                AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+                BannerAdSize.getCurrentOrientationBannerAdSize(
                     this,
-                    (binding.adContainer.width / resources.displayMetrics.density).toInt()
+                    (binding.ad.width / resources.displayMetrics.density).toInt()
                 )
-            adView.adUnitId = "/21775744923/example/adaptive-banner"
-            adView.setAdSize(adSize)
-            binding.adContainer.removeAllViews()
-            binding.adContainer.layoutParams = binding.adContainer.layoutParams
-                .apply { height = adSize.getHeightInPixels(binding.adContainer.context) }
-            binding.adContainer.addView(adView)
-            adView.loadAd(AdRequest.Builder().build())
+            binding.ad.adUnitId = "/21775744923/example/adaptive-banner"
+            binding.ad.adSize = adSize
+            binding.ad.layoutParams = binding.ad.layoutParams.apply { height = adSize.height }
+            binding.ad.loadAd()
         }
 
         OneShotPreDrawListener.add(binding.countsScroll) {
@@ -165,7 +159,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
     override fun onResume() {
         super.onResume()
         lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        adView.resume()
+        binding.ad.resume()
 
         if (!isCameraActivated) {
             requestCameraPermission()
@@ -173,7 +167,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
     }
 
     override fun onPause() {
-        adView.pause()
+        binding.ad.pause()
         lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE)
         super.onPause()
     }
@@ -184,7 +178,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
     }
 
     override fun onDestroy() {
-        adView.destroy()
+        binding.ad.destroy()
         lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         super.onDestroy()
     }

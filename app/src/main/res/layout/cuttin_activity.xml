@@ -9,8 +9,8 @@
     tools:layout_marginBottom="56dp"
     tools:layout_marginTop="24dp">
 
-    <FrameLayout
-        android:id="@+id/adContainer"
+    <dev.supasintatiyanupanwong.libraries.android.kits.ads.banner.BannerAdView
+        android:id="@+id/ad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
