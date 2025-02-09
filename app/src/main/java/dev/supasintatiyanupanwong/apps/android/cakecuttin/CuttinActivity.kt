@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
@@ -13,7 +14,6 @@ import android.widget.TextView
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.text.HtmlCompat
 import androidx.core.view.OneShotPreDrawListener
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
@@ -234,7 +234,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
 
         for (i in 0 until binding.counts.childCount) {
             val item = binding.counts.getChildAt(i) as TextView
-            item.text = item.text.toString() // Clear bold style
+            item.setTypeface(null, Typeface.NORMAL)
             item.textSize = 12f
 
             val itemCenterX = item.left + item.width / 2
@@ -254,7 +254,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
             }
 
             binding.cuttin.count = closestView.tag.toString().toInt()
-            closestView.text = HtmlCompat.fromHtml("<b>${closestView.text}</b>", HtmlCompat.FROM_HTML_MODE_LEGACY)
+            closestView.setTypeface(closestView.typeface, Typeface.BOLD)
             closestView.textSize = 14f
         }
     }
