@@ -11,7 +11,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        getSystemService(UiModeManager::class.java)?.nightMode = MODE_NIGHT_YES
+        (getSystemService(UI_MODE_SERVICE) as? UiModeManager)?.nightMode = MODE_NIGHT_YES
 
         thread { MobileAds.initialize(this) }
     }

@@ -13,8 +13,6 @@ private val DEFAULT_SCRIM_NIGHT = Color.argb(0x80, 0x1b, 0x1b, 0x1b)
 @Suppress("DEPRECATION")
 fun Activity.applyEdgeToEdge() {
     val view = window.decorView
-    val isNightMode = (view.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
-            Configuration.UI_MODE_NIGHT_YES
 
     view.systemUiVisibility = view.systemUiVisibility or
             // Tells the system that the window wishes the content to
@@ -27,32 +25,37 @@ fun Activity.applyEdgeToEdge() {
             // be laid out at the most extreme scenario of any other flags
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 
-    window.statusBarColor =
-        if (Build.VERSION.SDK_INT >= 29) {
-            Color.TRANSPARENT
-        } else {
-            if (isNightMode) DEFAULT_SCRIM_NIGHT else DEFAULT_SCRIM_LIGHT
-        }
-    window.navigationBarColor =
-        if (Build.VERSION.SDK_INT >= 29) {
-            Color.TRANSPARENT
-        } else {
-            if (isNightMode) DEFAULT_SCRIM_NIGHT else DEFAULT_SCRIM_LIGHT
-        }
+    if (Build.VERSION.SDK_INT >= 23) {
+        val isNightMode = (view.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
+                Configuration.UI_MODE_NIGHT_YES
 
-    if (isNightMode) {
-        view.systemUiVisibility = view.systemUiVisibility and
-                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
-        if (Build.VERSION.SDK_INT >= 26) {
+        window.statusBarColor =
+            if (Build.VERSION.SDK_INT >= 29) {
+                Color.TRANSPARENT
+            } else {
+                if (isNightMode) DEFAULT_SCRIM_NIGHT else DEFAULT_SCRIM_LIGHT
+            }
+        window.navigationBarColor =
+            if (Build.VERSION.SDK_INT >= 29) {
+                Color.TRANSPARENT
+            } else {
+                if (isNightMode) DEFAULT_SCRIM_NIGHT else DEFAULT_SCRIM_LIGHT
+            }
+
+        if (isNightMode) {
             view.systemUiVisibility = view.systemUiVisibility and
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
-        }
-    } else {
-        view.systemUiVisibility = view.systemUiVisibility or
-                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        if (Build.VERSION.SDK_INT >= 26) {
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+            if (Build.VERSION.SDK_INT >= 26) {
+                view.systemUiVisibility = view.systemUiVisibility and
+                        View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
+            }
+        } else {
             view.systemUiVisibility = view.systemUiVisibility or
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            if (Build.VERSION.SDK_INT >= 26) {
+                view.systemUiVisibility = view.systemUiVisibility or
+                        View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            }
         }
     }
 

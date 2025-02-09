@@ -4,4 +4,4 @@ package dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.graphic
 
 import androidx.core.graphics.Insets
 
-inline operator fun Insets.plus(other: Insets): Insets = Insets.add(this, other)
+inline infix fun Insets.or(other: Insets): Insets = Insets.max(this, other)

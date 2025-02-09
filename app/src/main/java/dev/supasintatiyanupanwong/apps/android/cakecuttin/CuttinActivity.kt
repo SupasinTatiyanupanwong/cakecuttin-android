@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.text.HtmlCompat
 import androidx.core.view.OneShotPreDrawListener
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
@@ -22,8 +24,7 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import dev.supasintatiyanupanwong.apps.android.cakecuttin.databinding.CuttinActivityBinding
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.app.activity.policy.applyEdgeToEdge
-import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.app.activity.setOnApplyWindowInsetsListener
-import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.graphics.plus
+import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.graphics.or
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.displayCutouts
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.navigationBars.isLightNavigationBarsForeground
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.statusBars.isLightStatusBarsForeground
@@ -68,8 +69,9 @@ class CuttinActivity : Activity(), LifecycleOwner {
         isLightNavigationBarsForeground = true
 
         setContentView(binding.root)
-        setOnApplyWindowInsetsListener { view, insets ->
-            val safeInsets = insets.systemBars + insets.displayCutouts
+        binding.root.setOnApplyWindowInsetsListener { view, insets ->
+            val safeInsets = WindowInsetsCompat.toWindowInsetsCompat(insets)
+                .let { it.systemBars or it.displayCutouts }
             view.setPadding(safeInsets.left, safeInsets.top, safeInsets.right, safeInsets.bottom)
             insets
         }
@@ -115,8 +117,14 @@ class CuttinActivity : Activity(), LifecycleOwner {
             }
             false
         }
-        binding.countsScroll.setOnScrollChangeListener { _, _, _, _, _ ->
-            invalidateCount()
+        if (Build.VERSION.SDK_INT >= 23) {
+            binding.countsScroll.setOnScrollChangeListener { _, _, _, _, _ ->
+                invalidateCount()
+            }
+        } else {
+            binding.countsScroll.viewTreeObserver.addOnScrollChangedListener {
+                invalidateCount()
+            }
         }
 
         binding.color.setOnClickListener {
@@ -160,7 +168,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
         adView.resume()
 
         if (!isCameraActivated) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_CODE)
+            requestCameraPermission()
         }
     }
 
@@ -188,6 +196,18 @@ class CuttinActivity : Activity(), LifecycleOwner {
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+    }
+
+    private fun requestCameraPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST_CODE)
+        } else {
+            onRequestPermissionsResult(
+                CAMERA_REQUEST_CODE,
+                arrayOf(Manifest.permission.CAMERA),
+                intArrayOf(packageManager.checkPermission(Manifest.permission.CAMERA, packageName))
+            )
         }
     }
 
