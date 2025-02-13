@@ -15,6 +15,7 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.view.OneShotPreDrawListener
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -66,11 +67,10 @@ class CuttinActivity : Activity(), LifecycleOwner {
         isLightNavigationBarsForeground = true
 
         setContentView(binding.root)
-        binding.root.setOnApplyWindowInsetsListener { view, insets ->
-            val safeInsets = WindowInsetsCompat.toWindowInsetsCompat(insets)
-                .let { it.systemBars or it.displayCutouts }
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val safeInsets = insets.systemBars or insets.displayCutouts
             view.setPadding(safeInsets.left, safeInsets.top, safeInsets.right, safeInsets.bottom)
-            insets
+            WindowInsetsCompat.CONSUMED
         }
 
         OneShotPreDrawListener.add(binding.ad) {
