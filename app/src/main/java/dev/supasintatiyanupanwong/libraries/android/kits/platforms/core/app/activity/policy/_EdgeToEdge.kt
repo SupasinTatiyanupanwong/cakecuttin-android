@@ -11,7 +11,7 @@ private val DEFAULT_SCRIM_LIGHT = Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
 private val DEFAULT_SCRIM_NIGHT = Color.argb(0x80, 0x1b, 0x1b, 0x1b)
 
 @Suppress("DEPRECATION")
-fun Activity.applyEdgeToEdge() {
+fun Activity.enableEdgeToEdge() {
     val view = window.decorView
 
     view.systemUiVisibility = view.systemUiVisibility or

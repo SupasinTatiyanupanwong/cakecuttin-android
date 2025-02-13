@@ -22,7 +22,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import dev.supasintatiyanupanwong.apps.android.cakecuttin.databinding.CuttinActivityBinding
 import dev.supasintatiyanupanwong.libraries.android.kits.ads.banner.BannerAdSize
-import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.app.activity.policy.applyEdgeToEdge
+import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.app.activity.policy.enableEdgeToEdge
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.graphics.or
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.displayCutouts
 import dev.supasintatiyanupanwong.libraries.android.kits.platforms.core.view.insets.navigationBars.isLightNavigationBarsForeground
@@ -59,7 +59,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
     private var isCountsScrolling = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyEdgeToEdge()
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
