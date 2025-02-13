@@ -254,7 +254,7 @@ class CuttinActivity : Activity(), LifecycleOwner {
             }
 
             binding.cuttin.count = closestView.tag.toString().toInt()
-            closestView.setTypeface(closestView.typeface, Typeface.BOLD)
+            closestView.setTypeface(null, Typeface.BOLD)
             closestView.textSize = 14f
         }
     }
